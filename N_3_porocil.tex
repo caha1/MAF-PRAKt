@@ -1,0 +1,269 @@
+
+
+\documentclass[11pt]{article}
+
+
+% uporabni paketi za slovenski jezik
+\usepackage[utf8]{inputenc}
+\usepackage[slovene]{babel}
+\usepackage[T1]{fontenc}
+
+% uporabni paketi za vstavljanje slik in bibliografijo
+\usepackage{graphicx}
+%\usepackage[square]{natbib}
+\usepackage{hyperref}
+
+%ostali paketi
+\usepackage{amsmath}
+\usepackage{txfonts}
+\usepackage{verbatim}
+\usepackage{color} 
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{datetime}
+\usepackage[nottoc]{tocbibind}
+\usepackage{url}
+
+\newdateformat{mydate}{\monthname[\THEMONTH] \THEYEAR}
+
+\DeclareGraphicsExtensions{{.jpg},{.png},{.pdf}}
+
+\textwidth=16cm\textheight=23.2cm
+
+\oddsidemargin=0.5cm\evensidemargin=0.5cm\voffset=0cm\topmargin=-1.3cm
+
+
+%naslovna stran
+
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+
+
+%\includegraphics[width=0.33 \textwidth]{logofmf1.pdf}\\[1.5em]
+{\large Univerza v Ljubljani, Fakulteta za matematiko in fiziko}\\[1em]
+
+{\large MATEMATIČNO-FIZIKALNI PRAKTIKUM} \\[2em]
+
+{\huge \bf 3. naloga: Lastne vrednosti in lastni vektorji} \\[2em]
+
+{\large Avtor: Ahac Pazlar}\\[0.5em]
+
+{\large ahacrow1@gmail.com}\\[1em]
+
+{\large Mentor: prof.dr. Simon Širca }\\[1.5em]
+
+{\large Ljubljana, \mydate\today }\\[10em]
+
+{\bf Povzetek}\\[1em]
+
+\begin{minipage}{\linewidth}
+
+\end{minipage}
+
+\tableofcontents
+
+\end{center}
+\end{titlepage}
+
+
+\section{Uvod}
+
+Enodimenzionalni linearni harmonski oscilator ( $T(p) = p^2/2m$ v potencialu $V(q)=m\omega^2 q^2/2$) opišemo z brezdimenzijsko hamiltonovo funkcijo kot
+
+\begin{equation}
+H_0 = \frac{1}{2} (p^2 + q^2)
+\end{equation}
+pri čemer energijo merimo v enotah $\hbar\omega$, gibalne količine v enotah $ (\hbar m\omega)^{1/2}$  in dolžine v enotah $ (\hbar/m\omega)^{1/2}$ 
+
+
+Nemoteni hamiltonki dodamo anharmonski člen 
+
+
+
+\begin{equation}
+H = H_0 + \lambda q^4
+\end{equation}
+
+Matrika $\langle i|H_0| j\rangle $ z $i,j = 0,1,2...N-1$ je diagonalna z vrednostmi $\delta_{ij}(i +1/2)$. Matriki $\langle i|H|j \rangle$ pa poleg nemotene matrike $H_0$ prištejemo še člene $q_{ij} = \langle i|q|j \rangle = \frac{1}{2} \sqrt{i + j + 1} \delta_{|i-j|,1} $ tako dobimo
+$$
+H =
+ \begin{bmatrix}
+ {\color{blue}1/2}		 & {\color{green}\lambda \sqrt{2}/2} & 0								& \cdots \\
+ {\color{green} \sqrt{2}/2}& {\color{blue}3/2} 				    & {\color{green}\lambda \sqrt{4}/2} & \cdots \\
+ 0 		   				 &{\color{green}\lambda \sqrt{4}/2}  & {\color{blue}5/2} 				& \cdots  \\
+  \vdots			   		& \vdots	 						    & \vdots 							& \ddots
+ \end{bmatrix}
+$$
+
+Pri čemer vse zeleno obarvane diagonalne elemnte ki pripadajo posplošeni kordinati $ q_{ij}$ potenciramo kot nam narekuje anharmonski člen.
+Zanimalo nas bo kako se zaradi te motnje spremenijo lastne energije.
+
+
+
+
+
+\section{Izvedba}
+\subsection{Potenčna metoda}
+
+
+Potrebno je narediti grafiko, ki bo zadostovala temu poročilu glede lastnih vrednosti in njihovih energij 
+
+$$ x_j = x + \sum_{j = 1}^{n+1} \Delta x_{nu}^j$$
+
+
+
+
+\begin{figure}[h!]	 % h - here; t - top; b - bottom;
+\begin{center}
+
+
+% Spremenjlivki width lahko dodelite različne 
+% vrednosti tako da pred širino teksta (\textwidth) pišete ustrezni 
+% koeficient (npr. 0.5\textwidth bo polovična širina teksta).
+% Namesto spremenljivke width lahko uporabljate višino (height).
+% ------
+%\includegraphics[width=0.8\textwidth, height=7.5cm]{pot_razlika_od_n.pdf}
+\end{center}
+\caption{Absolutna vrednost razlike med našo in pravo vrednostjo Airyeve funkcije, v odvisnosti od števila členov, ki jih seštejemo pri računanju vrste.}
+\end{figure}
+
+
+
+
+
+
+\begin{figure}[h!]	 % h - here; t - top; b - bottom;
+\begin{center}
+
+
+% Spremenjlivki width lahko dodelite različne 
+% vrednosti tako da pred širino teksta (\textwidth) pišete ustrezni 
+% koeficient (npr. 0.5\textwidth bo polovična širina teksta).
+% Namesto spremenljivke width lahko uporabljate višino (height).
+% ------
+%\includegraphics[width=0.8\textwidth, height=7.5cm]{pot_raz_bi.pdf}
+\end{center}
+\caption{Absolutna vrednost razlike med našo in pravo vrednostjo Airyeve funkcije, v odvisnosti od števila členov, ki jih seštejemo pri računanju vrste.}
+\end{figure}
+
+
+
+
+
+
+
+\subsection{Asimptotski vrsti}
+
+Asimptotska vrsta je potenčni razvoj okoli neskončnosti. V našem primeru jo predstavljata enačbi (4) in (5). Problem se pojavi, ker vrsta ne konvergira za nobeno končno vrednost argumenta $x$. Na slikah (3,4) opazimo, kako se z večanjem absolutne vrednosti  argumenta $x$ podaljšuje območje, do koder vrsta konvergira. Za primer, vrste $Ai(x=5)$  se divergenca pojavi že za $n>15$, za enako vrednost negativen asimptotske vrste pa za $n>7$. Da bomo zagotovili optimalen izračun vsote, moramo zahtevati, da se vsota prekine, ko začne velikost členov naraščati $a_{n+1} > a_{n}$. Smatramo, da dokler členi ne naraščajo, do tam vrsta konvergira v ohlapnem smislu.
+
+\begin{figure}[h!]	 % h - here; t - top; b - bottom;
+\begin{center}
+
+
+% Spremenjlivki width lahko dodelite različne 
+% vrednosti tako da pred širino teksta (\textwidth) pišete ustrezni 
+% koeficient (npr. 0.5\textwidth bo polovična širina teksta).
+% Namesto spremenljivke width lahko uporabljate višino (height).
+% ------
+%\includegraphics[width=0.8\textwidth, height=7.5cm]{pozasimp_ai.pdf}
+\end{center}
+\caption{Členi asimptotske vrste Ai(x), ki je predstavljena v enačbi (4), normirani na prvi člen vrste.}
+\end{figure}
+	
+
+\begin{figure}[h!]	 % h - here; t - top; b - bottom;
+\begin{center}
+
+
+% Spremenjlivki width lahko dodelite različne 
+% vrednosti tako da pred širino teksta (\textwidth) pišete ustrezni 
+% koeficient (npr. 0.5\textwidth bo polovična širina teksta).
+% Namesto spremenljivke width lahko uporabljate višino (height).
+% ------
+%\includegraphics[width=0.8\textwidth, height=7.5cm]{negasimp_bi.pdf}
+\end{center}
+\caption{Členi asimptotske vrste Bi(x), ki je predstavljena v enačbi (4), za različne argumente $x$}
+\end{figure}
+
+
+\subsection{Uporaba vrst}
+
+Primerjavo omenjenih metod za izračun vrednosti Airyevih funkcij na različnih območjih, sem naredil preko izračuna absolutne napake. Želja je bila, da je absolutna napaka manjša od $10^{-10}$  za vse $x$. Opazimo, da se pri izračun $Ai(x)$, da zagotoviti tako natančnost tako, da za $x < -7.5$ uporabimo vrsto iz enačbe (5). Za $x> 8.5$ računamo z vrsto iz enačbe (4), v vmesnem delu pa je najboljši približek za majhne $x$. 
+\begin{figure}[h!]	 % h - here; t - top; b - bottom;
+\begin{center}
+
+
+% Spremenjlivki width lahko dodelite različne 
+% vrednosti tako da pred širino teksta (\textwidth) pišete ustrezni 
+% koeficient (npr. 0.5\textwidth bo polovična širina teksta).
+% Namesto spremenljivke width lahko uporabljate višino (height).
+% ------
+%\includegraphics[width=0.8\textwidth, height=8cm]{abs_ai_napaka.pdf}
+\end{center}
+\caption{Absolutna napaka za različne vrste in velikostna območja, z označeno mejo natančnosti natančnosti. Kjer sta $Ai$ izračunana vrednost in $\widehat{Ai}$ prava vrednost Airyeve funkcije.}
+\end{figure}
+
+\begin{figure}[h!]	 % h - here; t - top; b - bottom;
+\begin{center}
+
+Pri izračunu $Bi(x)$ je postopek zelo podoben, pri $ x \approx 7.5$  preklopimo iz vrste za velike po absolutni vrednosti negativen $x$   v izračun vrste za male $x$. Težave pa nastopijo za $x >8$, kjer natančnost pade pod mejo $ 10^{-10}$,  hkrati pa še vedno ostaja približek za male $x$ boljši od približka za velike $x$. 
+
+% Spremenjlivki width lahko dodelite različne 
+% vrednosti tako da pred širino teksta (\textwidth) pišete ustrezni 
+% koeficient (npr. 0.5\textwidth bo polovična širina teksta).
+% Namesto spremenljivke width lahko uporabljate višino (height).
+% ------
+%\includegraphics[width=0.8\textwidth, height=8cm]{abs_npaka_Bi.pdf}
+\end{center}
+\caption{Absolutna napaka za različne vrste pri izračunu Airyeve funkcije $Bi$}
+\end{figure}
+\subsection{Dodatna naloga}
+Pri tej nalogi smo iskali ničle Airyevih funkcij $Ai$ in $Bi$, na dva načina. S pomočjo formule, za izračun Airyeve funkcije, in pa teoretično podane vrste. Pri izračunu ničel sem uporabil naiven pristop ( na grafu spodaj označen z $1$), in določil za ničlo funkcije vsako točko, ki se je nahajala v intervalu $-0.045 < y<0.045 $. Slednje sem si privoščil, ker vem da vrsta prenihava za $x<0$. So se pa zradi tega znotraj seznama našle točke, ki so še ujele interval, vendar ne predstavljajo ničel. 
+
+Za primerjavo pa sem izračunal ničle $a_s$ in $b_s$ s pomočjo;
+$$ a_s = -f \left ( \frac{3\pi ( 4s - 1)}{8} \right ), \quad \quad \quad  b_s =  -f \left ( \frac{3\pi ( 4s - 3)}{8} \right ) , \quad \quad s = 1,2,3 \dots$$
+
+kjer za funkcijo $f$ velja asimptotski razvoj : 
+$$ f(z) \sim z^{2/3}\left(  1+ \frac{5}{45}\,z^{-2} - \frac{5}{36}\,z^{-4} + \frac{77125}{82944}\,z^{-6} - \dots \right) $$.
+
+
+Pri izračunu $Bi(x)$ je postopek zelo podoben, pri $ x \approx 7.5$  preklopimo iz vrste za velike po absolutni vrednosti negativen $x$   v izračun vrste za male $x$. Težave pa nastopijo za $x >8$, kjer natančnost pade pod mejo $ 10^{-10}$,  hkrati pa še vedno ostaja približek za male $x$ boljši od približka za velike $x$. 
+\begin{figure}[h!]	 % h - here; t - top; b - bottom;
+\begin{center}
+
+% Spremenjlivki width lahko dodelite različne 
+% vrednosti tako da pred širino teksta (\textwidth) pišete ustrezni 
+% koeficient (npr. 0.5\textwidth bo polovična širina teksta).
+% Namesto spremenljivke width lahko uporabljate višino (height).
+% ------
+%\includegraphics[width=0.8\textwidth, height=7.5cm]{nicle_funkcij.pdf}
+\end{center}
+\caption{Primerjava izračunanih ničel iz formul za Airyevi funkciji $Bi(y=0)$ in $Ai(y=0)$ z ničlami iz vrst $a_s$ in $b_s$. $Ai$ in $a_s$ sta upodobljeni za $|x|$, $b_s$ in $Bi$ pa za $x$. }
+
+\end{figure}
+Ker sem v začetku izbral naivno metodo za določanj ničel, sem se odločil primerjati napake različnih metod pri iskanju ničel. Naslednji približek za iskanje ničle je bil primerjava predznakov vrednosti funkcije, za ničlo pa sem določil vmesni člen ( na grafu označena z $2$ ). Za zadnjo metodo pa sem izbral bisekcija, od katere sem pričakoval najboljši izračun ( na grafu označena z $3$).
+
+\begin{figure}[t!]	 % h - here; t - top; b - bottom;
+\begin{center}
+
+% Spremenjlivki width lahko dodelite različne 
+% vrednosti tako da pred širino teksta (\textwidth) pišete ustrezni 
+% koeficient (npr. 0.5\textwidth bo polovična širina teksta).
+% Namesto spremenljivke width lahko uporabljate višino (height).
+% ------
+%\includegraphics[width=0.8\textwidth, height=7.5cm]{nicle_napake_rel.pdf}
+\end{center}
+\caption{Primerjava relativne napake izračunanih ničel za funkcijo $Ai$ po treh različnih metodah. Na grafu $n$ predstavlja ničle funkcije.  }
+
+\end{figure}
+Zanimivo, je bilo predvsem, da manjšanje koraka pri pri $1.$ metodi pomeni slabše rezultate, medtem ko pri metodi $2.$ zelo malo izboljša rezultat. Prav tako sem pričakoval, da bo metoda $2.$ uspešnejša od metode $1.$, vendar se to zgodi šele od $70.$ ničle naprej. Pričakovano pa je bilo, da bo imela bisekcija najboljše rezultate.
+\newpage
+\section{Zaključek}
+Pri tej nalogi sem pogledali preproste načine, kako numerično izračunati vrste, ki konvergirajo in vrste ki divergirajo z naraščanjem členov. Na primeru Airyevih funkcij smo pogledali, kje so območja natančnega izračunavanja in v katerih točkah je potrebno preklopiti na drugo metodo, da ostanemo na željeni natančnosti. Pri dodatni nalogi, sem primerjal relativno napako izračuna ničel Airiyeve funkcije s pomočjo vrste z izračunom ničel po treh različnih numeričnih metodah. Kjer se je izkazalo, da je pri najboljši izmed treh metod, razlika le za nekaj procentov. 
+
+\end{document}	
